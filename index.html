@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWOT for the Soul Analysis™ Deep Dive Immersion</title>
+    <!-- Google Fonts - Lora for headings, Inter for body -->
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Inter', sans-serif; /* Default body font */
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Systeme.io Wrapper & Global Colors */
+        .systeme-io-wrapper {
+            background-color: #FDFDFD; /* Very light, almost white background */
+            color: #333333; /* Dark grey text for readability */
+            min-height: 100vh;
+            box-sizing: border-box;
+            position: relative; /* Needed for background animation */
+            overflow: hidden; /* Hide overflow from animations */
+        }
+
+        .systeme-io-wrapper * {
+            box-sizing: border-box;
+        }
+
+        /* Background Animation - Subtle Waves */
+        .background-animation {
+            position: fixed; /* Use fixed to cover entire viewport */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1; /* Send to back */
+            background: linear-gradient(135deg, #FDFDFD 0%, #F5F5F5 100%); /* Light gradient base */
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100px; /* Base height of the wave */
+            background: rgba(139, 0, 0, 0.03); /* Very subtle maroon wave color */
+            animation: wave-motion 20s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        }
+
+        .wave.wave-1 {
+            background: rgba(165, 42, 42, 0.02); /* Slightly different maroon shade */
+            animation-duration: 25s;
+            height: 120px;
+            opacity: 0.8;
+            left: -50%;
+        }
+
+        .wave.wave-2 {
+            background: rgba(139, 0, 0, 0.04);
+            animation-duration: 18s;
+            height: 110px;
+            opacity: 0.7;
+            left: -20%;
+        }
+
+        .wave.wave-3 {
+            background: rgba(165, 42, 42, 0.03);
+            animation-duration: 22s;
+            height: 130px;
+            opacity: 0.9;
+            left: -80%;
+        }
+
+        @keyframes wave-motion {
+            0% {
+                transform: translateX(0) translateY(0) scaleY(1);
+            }
+            25% {
+                transform: translateX(10%) translateY(-5px) scaleY(1.02);
+            }
+            50% {
+                transform: translateX(20%) translateY(0) scaleY(1);
+            }
+            75% {
+                transform: translateX(10%) translateY(5px) scaleY(0.98);
+            }
+            100% {
+                transform: translateX(0) translateY(0) scaleY(1);
+            }
+        }
+
+        /* Container */
+        .container {
+            width: 100%; /* Ensure it takes full width */
+            padding-left: 1rem; /* Default padding for mobile */
+            padding-right: 1rem; /* Default padding for mobile */
+        }
+
+        /* Section Styling */
+        section {
+            padding: 5rem 0; /* More vertical padding for distinct sections */
+            margin-bottom: 0; /* Sections will have their own spacing */
+            background-color: #FFFFFF; /* White background for content blocks */
+            border-radius: 0; /* No explicit border-radius on main sections */
+            box-shadow: none; /* No shadow on main sections, only internal elements */
+            border: none; /* No border on main sections */
+            position: relative; /* Ensure content is above waves */
+            z-index: 1; /* Ensure content is above waves */
+        }
+
+        /* Inner content boxes */
+        .content-box {
+            background-color: #FFFFFF;
+            border: 1px solid #EEEEEE; /* Very light border */
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Subtle shadow */
+            padding: 2.5rem; /* Generous padding */
+        }
+
+        /* Headings */
+        h1, h2 {
+            font-family: 'Lora', serif; /* Serif font for main headings */
+            color: #8B0000; /* Deep Maroon */
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        h1 {
+            font-size: 3rem; /* Larger hero heading */
+            font-weight: 700;
+            line-height: 1.15;
+        }
+        h2 {
+            font-size: 2.25rem; /* Section titles */
+            font-weight: 600;
+            margin-bottom: 3rem; /* More space below section titles */
+        }
+        h3 { /* For sub-headings like "Sovereign Operator™" and card titles */
+            font-family: 'Inter', sans-serif;
+            font-size: 1.35rem; /* Slightly larger */
+            font-weight: 600;
+            color: #8B0000; /* Deep Maroon */
+            margin-bottom: 0.75rem;
+        }
+
+        /* Paragraphs and Text */
+        p {
+            margin-bottom: 1rem;
+            color: #444444;
+        }
+        .text-small { font-size: 0.9rem; color: #666666; }
+        .text-medium { font-size: 1rem; }
+        .text-large { font-size: 1.15rem; }
+        .font-bold { font-weight: 700; }
+        .font-semibold { font-weight: 600; }
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .max-width-content { max-width: 800px; margin-left: auto; margin-right: auto; }
+        .space-y-4 > *:not(:first-child) { margin-top: 1rem; }
+        .space-y-6 > *:not(:first-child) { margin-top: 1.5rem; }
+
+        /* Links */
+        a {
+            color: #A52A2A; /* Maroon for links */
+            text-decoration: none; /* No underline by default */
+            transition: color 0.2s ease;
+        }
+        a:hover {
+            color: #8B0000; /* Darker maroon on hover */
+            text-decoration: underline; /* Underline on hover */
+        }
+        .underline { text-decoration: underline; }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem; /* Larger buttons */
+            border: 2px solid #8B0000; /* Maroon border */
+            border-radius: 0.3rem;
+            background-color: #FFFFFF;
+            color: #8B0000;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* More pronounced shadow */
+        }
+        .btn:hover {
+            background-color: #FFF5F5; /* Very light maroon on hover */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            transform: translateY(-2px);
+        }
+        .btn-primary {
+            background-color: #8B0000; /* Deep Maroon */
+            color: #FFFFFF;
+            border-color: #8B0000;
+        }
+        .btn-primary:hover {
+            background-color: #A52A2A; /* Lighter maroon on hover */
+            border-color: #A52A2A;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 8rem 1.5rem; /* Generous padding */
+            margin-bottom: 4rem;
+            background-color: #FFFFFF; /* White background */
+            border-radius: 0 0 3rem 3rem; /* Rounded bottom corners */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08); /* Stronger shadow */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            overflow: hidden; /* Ensure content stays within bounds */
+        }
+        .hero-content {
+            z-index: 1; /* Ensure text is above any potential background elements */
+            width: 100%;
+        }
+        .hero-section h1 {
+            margin-bottom: 1rem;
+            color: #8B0000; /* Deep Maroon */
+        }
+        .hero-section .tagline {
+            font-size: 1.5rem; /* Larger tagline */
+            color: #555555;
+            margin-bottom: 2rem;
+            max-width: 900px;
+            text-align: center; /* Ensure subheading is centered */
+            margin-left: auto; /* Center the block within its parent */
+            margin-right: auto; /* Center the block within its parent */
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem; /* More space between buttons */
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            z-index: 1;
+        }
+        /* hero-image removed */
+
+        /* Image + Text Layout (for About Marinna, Star Island) */
+        .image-text-section {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem; /* More space between image and text */
+            align-items: center;
+            padding: 5rem 1.5rem; /* Consistent section padding */
+        }
+        .image-text-section .section-image {
+            width: 100%;
+            max-width: 450px; /* Slightly larger image */
+            height: auto;
+            border-radius: 0.75rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .image-text-section .section-content {
+            width: 100%;
+        }
+        .image-text-section h2 {
+            text-align: left; /* Align heading to the left within its content box */
+            margin-bottom: 1.5rem;
+        }
+        .image-text-section blockquote {
+            margin-top: 2rem;
+            border-left: 4px solid #A52A2A; /* Maroon border */
+            padding-left: 1.5rem;
+            font-style: italic;
+            color: #555555;
+        }
+
+        /* Three-Card Layout (for Proprietary Modalities) */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem; /* More gap between cards */
+            margin-top: 3rem;
+        }
+        .card {
+            background-color: #FFFFFF;
+            border: 1px solid #EEEEEE;
+            border-radius: 0.75rem; /* More rounded */
+            padding: 2rem; /* More padding inside cards */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Subtle card shadow */
+            text-align: left;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        .card h3 {
+            color: #8B0000; /* Maroon for card titles */
+            margin-bottom: 0.75rem;
+        }
+        .card p {
+            font-size: 0.95rem;
+            color: #555555;
+        }
+
+        /* SWOT Section Layout */
+        .swot-layout {
+            display: grid;
+            grid-template-areas:
+                "strength"
+                "weakness"
+                "opportunity"
+                "threat"; /* Image area removed */
+            gap: 1rem; /* Reduced gap for closer boxes */
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 3rem;
+            max-width: 800px; /* Constrain width for centering */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .swot-item {
+            padding: 1.5rem; /* More padding */
+            border: 1px solid #EEEEEE;
+            border-radius: 0.5rem;
+            background-color: #FFFFFF;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            text-align: left;
+        }
+        .swot-item h3 {
+            color: #8B0000; /* Maroon for SWOT item titles */
+            margin-bottom: 0.5rem;
+        }
+        .swot-item p {
+            font-size: 0.9rem;
+            color: #555555;
+        }
+        /* swot-image-center removed */
+
+        /* Investment & Prerequisites Grid */
+        .two-col-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem; /* More gap */
+            padding: 5rem 1.5rem; /* Consistent section padding */
+        }
+        .grid-item-content {
+            background-color: #FFFFFF;
+            padding: 2.5rem; /* More padding */
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid #EEEEEE;
+        }
+        .grid-item-content h2 {
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+        .grid-item-content ul {
+            list-style: none; /* Removed default disc style */
+            padding-left: 0;
+            margin-top: 1rem;
+            color: #444444;
+        }
+        .grid-item-content ul li {
+            margin-bottom: 0.75rem;
+            position: relative;
+            padding-left: 1.5rem; /* Space for custom bullet */
+        }
+        .grid-item-content ul li::before {
+            content: '•'; /* Custom bullet point */
+            color: #A52A2A; /* Maroon bullet */
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+            line-height: 1;
+        }
+        .grid-item-content .font-bold {
+            color: #8B0000; /* Deep Maroon for bold text like prices */
+        }
+
+        /* Boat Schedule Specifics */
+        .boat-schedule-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .boat-schedule-item {
+            display: flex;
+            align-items: center;
+            background-color: #FFFFFF;
+            border-radius: 0.75rem;
+            border: 1px solid #EEEEEE;
+            padding: 1.5rem; /* More padding */
+            margin-bottom: 1.25rem; /* More space between items */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .boat-schedule-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .boat-schedule-item:last-child {
+            margin-bottom: 0;
+        }
+        .boat-schedule-item .icon {
+            flex-shrink: 0;
+            margin-right: 1.25rem; /* More space */
+            width: 2rem; /* Slightly larger icon */
+            height: 2rem;
+            color: #8B0000; /* Deep Maroon for icon */
+        }
+        .boat-schedule-item .icon svg {
+            width: 100%;
+            height: 100%;
+        }
+        .boat-schedule-item span {
+            font-weight: 600;
+            color: #8B0000; /* Deep Maroon for bold date text */
+        }
+        .boat-schedule-item div {
+            color: #444444;
+        }
+
+
+        /* Final Call to Action */
+        .final-cta-section {
+            background-color: #8B0000; /* Solid Maroon background */
+            color: #FFFFFF; /* White text */
+            text-align: center;
+            padding: 5rem 1.5rem;
+            border-radius: 0.75rem; /* Rounded corners */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2); /* Stronger shadow */
+            margin-top: 4rem; /* More space before this section */
+        }
+        .final-cta-section h2 {
+            color: #FFFFFF; /* White heading */
+            margin-bottom: 1.5rem;
+        }
+        .final-cta-section p {
+            color: #F0F0F0; /* Off-white paragraph text */
+            max-width: 700px;
+            margin: 0 auto 2.5rem auto;
+            font-size: 1.25rem; /* Larger text */
+        }
+        .final-cta-section .btn {
+            background-color: #FFFFFF; /* White button */
+            color: #8B0000; /* Maroon text */
+            border-color: #FFFFFF; /* White border */
+            padding: 1.2rem 3rem; /* Even larger button */
+            font-size: 1.35rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .final-cta-section .btn:hover {
+            background-color: #F0F0F0;
+            color: #A52A2A;
+            transform: translateY(-3px);
+        }
+        .final-cta-section a.email-link {
+            display: block;
+            margin-top: 2rem;
+            font-size: 1.15rem;
+            color: #F0F0F0; /* Off-white email link */
+            text-decoration: underline;
+        }
+        .final-cta-section a.email-link:hover {
+            color: #FFFFFF;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 4rem; /* More space from previous section */
+            padding-top: 2.5rem; /* More padding */
+            border-top: 1px solid #EEEEEE; /* Lighter border */
+            color: #666666;
+            font-size: 0.85rem;
+            padding-bottom: 2.5rem;
+        }
+
+        /* Responsive Adjustments */
+        @media (min-width: 768px) { /* Medium screens */
+            .container {
+                padding-left: 1rem; /* Reduced padding for medium screens */
+                padding-right: 1rem; /* Reduced padding for medium screens */
+            }
+            section {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+            h1 { font-size: 4rem; }
+            h2 { font-size: 2.75rem; }
+
+            .hero-section {
+                padding: 10rem 2rem;
+            }
+            .hero-section h1 {
+                font-size: 4.5rem;
+            }
+            .hero-section .tagline {
+                font-size: 1.75rem;
+            }
+            /* hero-image removed from media query */
+
+            .image-text-section {
+                flex-direction: row; /* Horizontal layout */
+                align-items: flex-start; /* Align items to the top */
+                text-align: left;
+                gap: 4rem;
+            }
+            .image-text-section.reverse {
+                flex-direction: row-reverse; /* Image on right */
+            }
+            .image-text-section .section-image {
+                width: 40%;
+                max-width: 450px;
+            }
+            .image-text-section .section-content {
+                width: 60%;
+                padding-left: 0; /* Reset padding */
+                padding-right: 0; /* Reset padding */
+            }
+            .image-text-section.reverse .section-content {
+                padding-left: 0;
+                padding-right: 0;
+            }
+            .image-text-section:not(.reverse) .section-content {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .card-grid {
+                grid-template-columns: repeat(3, 1fr); /* Three columns */
+                gap: 2.5rem;
+            }
+
+            .swot-layout {
+                grid-template-areas:
+                    "strength opportunity"
+                    "weakness threat"; /* Image area removed */
+                grid-template-columns: 1fr 1fr; /* Two columns */
+                gap: 1.5rem; /* Reduced gap for closer boxes */
+                justify-items: center; /* Center items horizontally within their grid areas */
+            }
+            .swot-item {
+                text-align: left;
+            }
+            .swot-strength, .swot-weakness, .swot-opportunity, .swot-threat {
+                justify-self: center; /* Center items within their grid cells */
+            }
+            /* swot-image-center removed from media query */
+
+            .two-col-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (min-width: 1024px) { /* Large screens */
+            .container {
+                padding-left: 1rem; /* Reduced padding for large screens */
+                padding-right: 1rem; /* Reduced padding for large screens */
+            }
+            section {
+                padding-left: 3rem;
+                padding-right: 3rem;
+            }
+            h1 { font-size: 5rem; }
+            h2 { font-size: 3.5rem; }
+
+            .hero-section {
+                padding: 12rem 3rem;
+            }
+            .hero-section h1 {
+                font-size: 5.5rem;
+            }
+            .hero-section .tagline {
+                font-size: 2rem;
+            }
+            /* hero-image removed from media query */
+        }
+    </style>
+</head>
+<body class="leading-relaxed">
+    <!-- Main wrapper for Systeme.io compatibility -->
+    <div class="systeme-io-wrapper">
+        <div class="background-animation">
+            <div class="wave wave-1"></div>
+            <div class="wave wave-2"></div>
+            <div class="wave wave-3"></div>
+        </div> <!-- Subtle background animation -->
+        <div class="container">
+
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h1>SWOT for the Soul Analysis™: Deep Dive Immersion</h1>
+                    <p class="text-large tagline">Upgrade from Survival to Sovereignty. Unleash your true energetic autonomy and redefine success on your own terms.</p>
+                    <div class="hero-buttons">
+                        <a href="mailto:marinna@marinnarose.com?subject=Inquiry%20about%20SWOT%20for%20the%20Soul%20Analysis%E2%84%A2%20Deep%20Dive%20Immersion" class="btn btn-primary">Inquire Now</a>
+                        <a href="#about-marinna-section" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <!-- Removed hero illustration image -->
+            </section>
+
+            <!-- Meet Marinna Rose Section -->
+            <section id="about-marinna-section" class="image-text-section">
+                <div class="content-box">
+                    <!-- Removed Marinna Rose image -->
+                    <div class="section-content">
+                        <h2>Meet Marinna Rose: Your Energetic Alchemist</h2>
+                        <h3>Sovereign Operator™ | Energetic Forensics & Quantum Recalibrator</h3>
+                        <p class="text-medium">Marinna Rose is a precision instrument for high-capacity individuals ready to uninstall inherited and unseen influences in their operating systems and return to their original code. With over 15 years of transformation work, she has guided numerous visionaries, leaders, and legacy-builders through the forensic process of reclaiming their energetic autonomy.</p>
+                        <p class="text-medium">Her work isn't about healing the past—it's about stripping it of the authority it never earned. Through proprietary modalities like <span class="font-semibold">The Soulflower Method™/SWOT for the Soul™</span> and <span class="font-semibold">StemLine Therapy™</span>, Marinna exposes the subconscious code beneath the persona—then executes the override. Her approach is surgical, not surface-level. Precise, not performative. Sacred, not sentimental.</p>
+                        <blockquote>"I forensically expose the source. You sovereignly choose the override."</blockquote>
+                        <p class="text-small">
+                            <a href="https://www.marinnarose.com" target="_blank">www.marinnarose.com</a> |
+                            <a href="mailto:marinna@marinnarose.com">marinna@marinnarose.com</a>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Beyond Conventional Healing: Surgical Precision Section -->
+            <section>
+                <div class="content-box">
+                    <h2>Beyond Conventional Healing: Surgical Precision</h2>
+                    <p class="text-large text-center max-width-content">Marinna's work isn't about healing the past—it's about stripping it of the authority it never earned. She delves beyond surface-level solutions to expose and override the subconscious code dictating your current reality.</p>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h3>Proprietary Modalities</h3>
+                            <p>Utilizing The Soulflower Method™, SWOT for the Soul™, and StemLine Therapy™ to uncover deep-seated energetic patterns.</p>
+                        </div>
+                        <div class="card">
+                            <h3>Surgical, Not Surface</h3>
+                            <p>Her approach is precise and direct, targeting the root causes of energetic blockages for lasting transformation.</p>
+                        </div>
+                        <div class="card">
+                            <h3>Sacred, Not Sentimental</h3>
+                            <p>Engage in a profound, respectful process that honors your journey without attachment to past narratives.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SWOT for the Soul Analysis™: Phase 1 Deep Dive Section -->
+            <section>
+                <div class="content-box">
+                    <h2>SWOT for the Soul Analysis™: Phase 1 Deep Dive</h2>
+                    <p class="text-large text-center max-width-content">This foundational immersion, Phase 1 of The Soulflower Method™, is an energetic audit—not a personality assessment—that maps your soul's true architecture.</p>
+                    <div class="swot-layout">
+                        <div class="swot-item swot-strength">
+                            <h3>Strengths</h3>
+                            <p>Illuminate your inherent energetic capacities and unique gifts.</p>
+                        </div>
+                        <!-- Removed SWOT Icon image -->
+                        <div class="swot-item swot-opportunity">
+                            <h3>Opportunities</h3>
+                            <p>Uncover pathways for expansion and heightened energetic flow.</p>
+                        </div>
+                        <div class="swot-item swot-weakness">
+                            <h3>Weaknesses</h3>
+                            <p>Identify subconscious patterns that deplete your energy.</p>
+                        </div>
+                        <div class="swot-item swot-threat">
+                            <h3>Threats</h3>
+                            <p>Expose unseen influences attempting to override your true code.</p>
+                        </div>
+                    </div>
+                    <p class="text-medium text-center max-width-content" style="margin-top: 2.5rem;">This foundational work prepares you for the complete Soulflower Method™ journey, including <span class="font-semibold">StemLine Therapy™</span> and <span class="font-semibold">Sovereign Operating System™</span> installation.</p>
+                </div>
+            </section>
+
+            <!-- An Idyllic Sanctuary: Star Island Retreat Section -->
+            <section class="image-text-section reverse">
+                <div class="content-box">
+
+                    <div style="position: relative; width: 100%; height: 0; padding-top: 50.0538%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px; will-change: transform;">  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"    src="https://www.canva.com/design/DAGtXzXNT18/M6qj2hcl6NOKApMzQRL86w/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">  </iframe></div><a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAGtXzXNT18&#x2F;M6qj2hcl6NOKApMzQRL86w&#x2F;view?utm_content=DAGtXzXNT18&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">Design</a> by Jay R Cortes
+
+
+                    <div class="section-content">
+                        <h2>An Idyllic Sanctuary: Star Island Retreat</h2>
+                        <p class="text-medium">This immersive retreat takes place on Star Island, a stunning 38-acre granite island located 7 miles off the coast of New Hampshire. Part of the historic Isles of Shoals, this sacred space holds deep personal significance for Marinna, who grew up spending countless hours on her boat anchored in these very waters, always dreaming of one day facilitating transformational work on this mystical island.</p>
+                        <p class="text-medium">The rhythmic sound of ocean waves crashing against ancient granite shores and the island's wild, untouched environment creates the perfect container for deep energetic work, allowing your nervous system to fully relax and process. Marinna is honored to humbly share this sacred place that has been so dear to her heart with visionary leaders ready for transformational work.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Investment & Prerequisites Section -->
+            <section class="two-col-grid">
+                <div class="content-box grid-item-content">
+                    <h2>Investment</h2>
+                    <p class="text-large font-bold">Program Fee: $475</p>
+                    <p class="text-medium">Room & Board <span class="text-small">(per person for full conference)</span>:</p>
+                    <ul>
+                        <li><span class="font-bold">Standard Shared: $425</span></li>
+                    </ul>
+                    <p class="text-large font-bold" style="margin-top: 1.5rem;">Total Investment: $900</p>
+                    <p class="text-small">Limited space available for 8 Sovereign Ready Souls</p>
+                </div>
+
+                <div class="content-box grid-item-content">
+                    <h2>Prerequisites</h2>
+                    <p class="text-medium">Foundational Soul Blueprint Analysis with Marinna is required for access to this immersion. This ensures all participants are aligned and ready for the deep work ahead.</p>
+                </div>
+            </section>
+
+            <!-- Logistics: Boat Schedule Section -->
+            <section>
+                <div class="content-box">
+                    <h2>Logistics: Boat Schedule</h2>
+                    <p class="text-medium text-center max-width-content">The journey to Star Island is an integral part of the immersion experience. Please note the following schedule:</p>
+                    <ul class="boat-schedule-list max-width-content">
+                        <li class="boat-schedule-item">
+                            <span class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3A.75.75 0 0 1 18 3v1.5h.75a3 3 0 0 1 3 3v11.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3H6.75V3Zm10.5 9.75a.75.75 0 0 0 0 1.5h.008a.75.75 0 0 0 0-1.5h-.008ZM12 12.75a.75.75 0 0 0 0 1.5h.008a.75.75 0 0 0 0-1.5h-.008ZM6.75 12.75a.75.75 0 0 0 0 1.5h.008a.75.75 0 0 0 0-1.5h-.008ZM12 18.75a.75.75 0 0 0 0 1.5h.008a.75.75 0 0 0 0-1.5h-.008ZM6.75 18.75a.75.75 0 0 0 0 1.5h.008a.75.75 0 0 0 0-1.5h-.008ZM18 18.75a.75.75 0 0 0 0 1.5h.008a.75.75 0 0 0 0-1.5h-.008Z" clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                            <div>
+                                <span class="font-semibold">Friday, September 12th:</span> Departure from Portsmouth, NH at 2:25 PM
+                            </div>
+                        </li>
+                        <li class="boat-schedule-item">
+                            <span class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3A.75.75 0 0 1 18 3v1.5h.75a3 3 0 0 1 3 3v11.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3H6.75V3Zm10.5 9.75a.75.75 0 0 0 0 1.5h.008a.75.75 0 0 0 0-1.5h-.008ZM12 12.75a.75.75 0 0 0 0 1.5h.008a.75.75 0 0 0 0-1.5h-.008ZM6.75 12.75a.75.75 0 0 0 0 1.5h.008a.75.75 0 0 0 0-1.5h-.008ZM12 18.75a.75.75 0 0 0 0 1.5h.008a.75.75 0 0 0 0-1.5h-.008ZM6.75 18.75a.75.75 0 0 0 0 1.5h.008a.75.75 0 0 0 0-1.5h-.008ZM18 18.75a.75.75 0 0 0 0 1.5h.008a.75.75 0 0 0 0-1.5h-.008Z" clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                            <div>
+                                <span class="font-semibold">Sunday, September 14th:</span> Departure from Star Island at 2:55 PM
+                            </div>
+                        </li>
+                    </ul>
+                    <p class="text-small text-center max-width-content" style="margin-top: 2rem;">Further details regarding boarding and preparations will be provided upon registration.</p>
+                </div>
+            </section>
+
+            <!-- Final Call to Action / Contact Section -->
+            <section class="final-cta-section">
+                <h2>Ready to Deep Dive?</h2>
+                <p class="text-large">If you are a visionary leader ready to unlock your full potential and experience profound transformation, reach out today.</p>
+                <a href="mailto:marinna@marinnarose.com?subject=Inquiry%20about%20SWOT%20for%20the%20Soul%20Analysis%E2%84%A2%20Deep%20Dive%20Immersion" class="btn btn-primary">Contact Marinna</a>
+                <a href="mailto:marinna@marinnarose.com" class="email-link">marinna@marinnarose.com</a>
+            </section>
+
+            <!-- Footer Section -->
+            <footer>
+                &copy; 2025 SWOT for the Soul Analysis™. All rights reserved.
+            </footer>
+
+        </div>
+    </div>
+</body>
+</html>
