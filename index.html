@@ -4,12 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SWOT for the Soul Analysis™ Deep Dive Immersion</title>
-    <!-- Google Fonts - Lora for headings, Inter for body -->
-    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        @font-face {
+            font-family: 'Derive Italic';
+            src: url('fonts/Derive Italic.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'Montpier Handwritten';
+            src: url('fonts/Montpier Handwritten.otf') format('opentype');
+        }
+        @font-face {
+            font-family: 'Nourd Light';
+            src: url('fonts/nourd_light.ttf') format('truetype');
+        }
         /* Base Styles */
         body {
-            font-family: 'Inter', sans-serif; /* Default body font */
+            font-family: 'Nourd Light', sans-serif; /* Default body font */
             line-height: 1.6;
             margin: 0;
             padding: 0;
@@ -124,7 +134,7 @@
 
         /* Headings */
         h1, h2 {
-            font-family: 'Lora', serif; /* Serif font for main headings */
+            font-family: 'Montpier Handwritten', serif; /* Serif font for main headings */
             color: #A64D2D; /* Terracotta (Primary Color) */
             text-align: center;
             margin-bottom: 1.5rem;
@@ -140,7 +150,7 @@
             margin-bottom: 3rem; /* More space below section titles */
         }
         h3 { /* For sub-headings like "Sovereign Operator™" and card titles */
-            font-family: 'Inter', sans-serif;
+            font-family: 'Derive Italic', sans-serif;
             font-size: 1.35rem; /* Slightly larger */
             font-weight: 600;
             color: #A64D2D; /* Terracotta (Primary Color) */
@@ -336,6 +346,12 @@
             color: #555555;
         }
         /* swot-image-center removed */
+
+        .swot-background {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('images/placeholder.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
 
         /* Investment & Prerequisites Grid */
         .two-col-grid {
@@ -647,7 +663,7 @@
             </section>
 
             <!-- SWOT for the Soul Analysis™: Phase 1 Deep Dive Section -->
-            <section>
+            <section class="swot-background">
                 <div class="content-box">
                     <h2>SWOT for the Soul Analysis™: Phase 1 Deep Dive</h2>
                     <p class="text-large text-center max-width-content">This foundational immersion, Phase 1 of The Soulflower Method™, is an energetic audit—not a personality assessment—that maps your soul's true architecture.</p>
