@@ -106,9 +106,11 @@
 
         /* Container */
         .container {
-            width: 100%; /* Ensure it takes full width */
-            padding-left: 1rem; /* Default padding for mobile */
-            padding-right: 1rem; /* Default padding for mobile */
+            width: 100%;
+            max-width: 1200px; /* Set a max-width for larger screens */
+            margin: 0 auto; /* Center the container */
+            padding-left: 1rem;
+            padding-right: 1rem;
         }
 
         /* Section Styling */
@@ -543,10 +545,6 @@
 
         /* Responsive Adjustments */
         @media (min-width: 768px) { /* Medium screens */
-            .container {
-                padding-left: 1rem; /* Reduced padding for medium screens */
-                padding-right: 1rem; /* Reduced padding for medium screens */
-            }
             section {
                 padding-left: 2rem;
                 padding-right: 2rem;
@@ -620,10 +618,6 @@
         }
 
         @media (min-width: 1024px) { /* Large screens */
-            .container {
-                padding-left: 1rem; /* Reduced padding for large screens */
-                padding-right: 1rem; /* Reduced padding for large screens */
-            }
             section {
                 padding-left: 3rem;
                 padding-right: 3rem;
